@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-homework-平均數</title>
+
+    <style>
+
+        body{
+            background: lightblue;
+        }
+
+        .pic{
+            width: 300px;
+            height: 250px;
+        }
+        button{
+            background: lightseagreen;
+            border:1px solid mediumaquamarine;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        button:hover{
+            background: mediumseagreen;
+            border:1px solid aquamarine;
+
+        }
+
+    </style>
+</head>
+<body>
+    
+    <img src="sticker.png" alt="" class="pic">
+
+    <div>
+        
+        <button id="btnEng" onclick="getEng()"> click me to get english score</button>
+        <button id="btnMath" onclick="getMath()"> click me to get math score</button>
+
+
+        <p></p>
+        <p></p>
+
+    </div>
+
+
+
+    <script>
+
+        let studentA = {
+            name : "Alex",
+            age : 18,
+            eng_score: 87, 
+            math_score: 90
+        }
+
+        let studentB = {
+            name : "Bill",
+            age : 19,
+            eng_score: 95, 
+            math_score: 98
+        }
+
+        let studentC = {
+            name : "Cook",
+            age : 17,
+            eng_score: 100, 
+            math_score: 73
+        }
+
+        var arr = [];
+        arr.push(studentA);
+        arr.push(studentB);
+        arr.push(studentC);
+
+//-----------------------------------
+
+        var len = arr.length;
+
+        let engTotal = 0;
+        let mathTotal = 0;
+
+
+        function getEng(){
+
+            for ( i = 0 ; i<len ; i++ ){
+
+                engTotal += arr[i]["eng_score"];
+
+            }
+
+            let eng = engTotal / arr.length;
+
+
+            console.log("平均英文分數 : " + eng);
+
+
+            let txtEng = document.createTextNode("平均英文分數 : " + eng);
+
+            document.getElementsByTagName("p")[0].append(txtEng);
+
+            document.getElementById("btnEng").setAttribute("disabled", true)
+
+
+            engTotal = 0;
+
+        }
+
+        function getMath(){
+
+            for ( i = 0 ; i<len ; i++ ){
+
+                mathTotal += arr[i]["math_score"];
+
+            }
+
+            let math = mathTotal / arr.length;
+
+            console.log("平均數學分數 : " + math);
+
+            let txtMath = document.createTextNode("平均數學分數 : " + math);
+
+            document.getElementsByTagName("p")[1].append(txtMath);
+
+            document.getElementById("btnMath").setAttribute("disabled", true)
+
+            mathTotal = 0;
+        }
+
+
+
+
+    </script>
+
+</body>
+</html>
